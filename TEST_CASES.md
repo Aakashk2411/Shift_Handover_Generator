@@ -1,22 +1,59 @@
-# Test Cases
+# TEST_CASES
 
-## Project Title
+## Project: Shift Handover Note Generator
 
-Shift Handover Note Generator
+### Objective
 
-| Test Case ID | Scenario                    | Input                              | Expected Output                                         | Result |
-| ------------ | --------------------------- | ---------------------------------- | ------------------------------------------------------- | ------ |
-| TC01         | Upload Chat Logs            | Valid JSON file                    | Chat logs loaded successfully                           | Pass   |
-| TC02         | Upload Ticket Records       | Valid CSV file                     | Ticket records loaded successfully                      | Pass   |
-| TC03         | 12-Hour Filtering           | Records older than 12 hours        | Old records filtered out                                | Pass   |
-| TC04         | Multi-Source Summarization  | JSON + CSV data                    | Combined operational summary generated                  | Pass   |
-| TC05         | Incident Deduplication      | Duplicate incidents across sources | Single consolidated incident created                    | Pass   |
-| TC06         | Severity Classification     | Critical production outage         | Incident classified as Critical                         | Pass   |
-| TC07         | Resolved Incident Detection | Fixed API Gateway issue            | Moved to General System Fixes Delivered                 | Pass   |
-| TC08         | Watchlist Classification    | Monitoring-related event           | Added to Infrastructure Monitor Watchlist               | Pass   |
-| TC09         | Agent Loop Execution        | Valid operational data             | Summarizer Agent and Review Agent executed successfully | Pass   |
-| TC10         | Report Generation           | Processed operational data         | Structured Markdown report generated                    | Pass   |
-| TC11         | Report Export               | Generated report                   | Report saved as handover_note.md                        | Pass   |
+Validate the end-to-end functionality of the Shift Handover Note Generator application.
+
+---
+
+| Test Case ID | Scenario                         | Input                                 | Expected Output                           | Result |
+| ------------ | -------------------------------- | ------------------------------------- | ----------------------------------------- | ------ |
+| TC01         | Load Chat Logs                   | Valid JSON file                       | Chat log records loaded successfully      | Pass   |
+| TC02         | Load Ticket Records              | Valid CSV file                        | Ticket records loaded successfully        | Pass   |
+| TC03         | 12-Hour Filter                   | Records older and newer than 12 hours | Only recent records retained              | Pass   |
+| TC04         | Multi-Source Processing          | JSON + CSV files                      | Data combined into a single context       | Pass   |
+| TC05         | Incident Deduplication           | Similar incidents across sources      | Duplicate incidents merged                | Pass   |
+| TC06         | Summarizer Agent Execution       | Filtered operational data             | Draft handover report generated           | Pass   |
+| TC07         | Review Agent Execution           | Draft report                          | Report validated and improved             | Pass   |
+| TC08         | Critical Incident Classification | Production outage record              | Added to High Priority Unresolved Fires   | Pass   |
+| TC09         | Resolved Incident Classification | Fixed operational issue               | Added to General System Fixes Delivered   | Pass   |
+| TC10         | Watchlist Classification         | Monitoring event                      | Added to Infrastructure Monitor Watchlist | Pass   |
+| TC11         | Markdown Report Generation       | Valid processed data                  | Structured markdown report generated      | Pass   |
+| TC12         | End-to-End Workflow              | Sample JSON + Sample CSV              | Complete shift handover report produced   | Pass   |
+
+---
+
+## Happy Path Validation
+
+### Input Files
+
+sample_chats.json
+
+sample_tickets.csv
+
+### Workflow
+
+1. Upload JSON chat logs
+2. Upload CSV ticket records
+3. Apply 12-hour filtering
+4. Execute Summarizer Agent
+5. Execute Review Agent
+6. Generate final markdown report
+7. Save report to output folder
+
+### Expected Result
+
+* Operational incidents summarized
+* Duplicate incidents merged
+* Severity classifications applied
+* Recommendations generated
+* Markdown report produced successfully
+
+### Actual Result
+
+PASS
 
 ---
 
@@ -24,8 +61,8 @@ Shift Handover Note Generator
 
 | Metric           | Value |
 | ---------------- | ----- |
-| Total Test Cases | 11    |
-| Passed           | 11    |
+| Total Test Cases | 12    |
+| Passed           | 12    |
 | Failed           | 0     |
 | Success Rate     | 100%  |
 
@@ -33,17 +70,18 @@ Shift Handover Note Generator
 
 ## Conclusion
 
-All functional test cases were executed successfully.
+All functional test cases passed successfully.
 
-The Shift Handover Note Generator correctly performs:
+The application correctly performs:
 
-* JSON and CSV ingestion
-* 12-hour data filtering
+* JSON ingestion
+* CSV ingestion
+* 12-hour filtering
 * Multi-source summarization
 * Incident deduplication
-* Severity classification
 * Agent Loop execution
+* Severity classification
 * Markdown report generation
-* Report export
+* End-to-end workflow execution
 
-Overall Result: PASS ✅
+Overall Result: PASS
